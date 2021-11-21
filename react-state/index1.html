@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React-State</title>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+
+    <div id="root"></div>
+    <script type="text/babel">
+      
+      class Counter extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    count: 0,
+                    name: "Ali"
+                }
+            }
+            increment = () => {
+                this.setState(state => ({
+                    count: state.count + 1
+                }));
+            }
+            changeName = () => {
+                this.setState({
+                    name: 'Fred'
+                });
+            } 
+
+            decrement = () => {
+                this.setState(state => ({
+                    count: state.count - 1
+                }));
+            }
+            render(){
+                return(
+                    <div> 
+                        <h1>The count of {this.state.name}'s is {this.state.count}</h1>
+                        <button onClick={this.increment}>+</button>
+                        <button onClick={this.decrement}>-</button>
+                        <button onClick={this.changeName}>Change Name</button>
+                    </div>
+                )
+            }
+        }
+        class Counter1 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    count: 0,
+                    name: "Ali"
+                }
+            }
+            increment = () => {
+                this.setState(state => ({
+                    count: state.count + 1
+                }));
+            }
+            changeName = () => {
+                this.setState({
+                    name: 'Fred'
+                });
+            } 
+            decrement = () => {
+                this.setState(state => ({
+                    count: state.count - 1
+                }));
+            }
+            render(){
+                return(
+                    <div> 
+                        <h1>The count of {this.state.name}'s is {this.state.count}</h1>
+                        <button onClick={this.increment}>+</button>
+                        <button onClick={this.decrement}>-</button>
+                        <button onClick={this.changeName}>Change Name</button>
+                    </div>
+                )
+            }
+        }
+
+        class Counter2 extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    count: 0,
+                    name: "Ali"
+                }
+            }
+            increment = () => {
+                this.setState(state => ({
+                    count: state.count + 1
+                }));
+            }
+            changeName = () => {
+                this.setState({
+                    name: 'Fred'
+                });
+            } 
+            decrement = () => {
+                this.setState(state => ({
+                    count: state.count - 1
+                }));
+            }
+            render(){
+                return(
+                    <div> 
+                        <h1>The count of {this.state.name}'s is {this.state.count}</h1>
+                        <button onClick={this.increment}>+</button>
+                        <button onClick={this.decrement}>-</button>
+                        <button onClick={this.changeName}>Change Name</button>
+                    </div>
+                )
+            }
+        }
+
+        class App extends React.Component{
+            render(){
+                return(
+                <div>
+                    <Counter name="Ali"/>
+                    <Counter1 name="Fatih" />
+                    <Counter2 name="Ammar"/>
+                </div>
+                )
+            }
+        }
+    
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello, world</title>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+    // React components are like JS functions. They take an argument called "props" (an object),
+    // and return a JSX element that describes what the user should see.
+        
+    /* function Hi(props){
+        return <h1>Hi, {props.name}!</h1>
+    } */
+
+   /*  class Hi extends React.Component{
+        // constructor(props){
+            //state
+        // } 
+        render(){
+            return <h1>Hi, {this.props.name}!</h1>
+        }
+    } */
+
+       /*  ReactDOM.render(
+            // JSX (extension of JavaScript)
+            <Hi name="Jordan" />, // what? element
+            document.getElementById('root') // where
+        ); */
+        // What happens:
+        // 1. We call ReactDOM.render() with the <Hi name="Jordan" /> components as argument
+        // 2. React calls the Hi component with {name:"Jordan"} as props
+        // 3. the Hi component returns a <h1>Hi, Jordan!</h1> element
+        // 4. ReactDOM updates the DOM to match this element
+
+       /*  function Name(props){
+            //this does not work because props is immutable(read only)!
+            props.name = props.name.toUpperCase();
+            return <h1>Hi, {props.name}!</h1>
+        }
+
+        ReactDOM.render(
+            <Name name ="Pete Hunt" />,
+            document.getElementById('root')
+        ); */
+
+       /*  function Name(props){
+            let name = props.name; 
+            return <h1>Hi, {name.toUpperCase()}!</h1>
+        }
+
+        ReactDOM.render(
+            <Name name ="Pete Hunt" />,
+            document.getElementById('root')
+        ); */
+
+
+        // Task1: rewrite this using class-based components!
+        // Task2: nest the Name component inside an App component
+        /* class Name extends React.Component{
+                render(){ 
+                let name = this.props.name;
+                return <h1>Hi, {name.toUpperCase()}</h1>
+            }
+        } 
+
+        class App extends React.Component{
+            render(){
+                return (
+                <section>
+                    <Name name="Fatih" />
+                    <Name name="Ammar" />
+                    <Name name="Scharif" />
+                </section>
+                ); 
+            }
+        }
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        ); */
+ 
+       /*  function Name(props){
+            return <h1>Hello, {props.name}</h1>;
+        }
+        function App(){
+            return(
+                <section>
+                    <Name name="Fatih" />   
+                    <Name name="Ammar" /> 
+                    <Name name="Scharif" />   
+                </section>
+            );
+        }
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        ); */
+
+      /*   class Hello extends React.Component{
+            handleClick = () => {
+                alert("Hi " + this.props.name);
+            } 
+            render(){
+                return(
+                    <div>
+                        <h1>Greet {this.props.name}</h1>
+                        <button onClick={this.handleClick}>Say Hi!</button>
+                    </div>
+                )
+            }
+        }
+
+        class App extends React.Component{
+            render(){
+                return(
+                    <div>
+                    <Hello name="Ali" />
+                    <Hello name="Ammar" />
+                    <Hello name="Andre" />
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        );
+ */
+
+
+
+    </script>
+
+</body>
+</html>

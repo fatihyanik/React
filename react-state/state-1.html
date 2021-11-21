@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React State</title>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class Counter extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    count: 0,
+                    name: "Ali"
+                }
+            }
+
+            // store count in localStorage
+            componentDidMount(){
+                // 1. check if localStorage contains count
+                // 2. if it does, set the count to whatever is in localStorage
+                const count = localStorage.getItem('count');
+                if(count !== null){
+                    // set the state's count to the count of localStorage
+                    this.setState({
+                        count: parseInt(count)
+                    });
+                }
+                // 3. before unload, store count in localStorage
+                window.addEventListener('beforeunload', () =>{
+                    localStorage.setItem('count', this.state.count);
+                })
+            }
+
+
+            // the new state (count) depends on the state(count),
+            // so you need a callback as argument for setState
+            increment = () => {
+                this.setState(state => ({
+                    count: state.count + 1
+                }));
+            }
+
+    
+            decrement = () => {
+                this.setState(state => ({
+                    count: state.count - 1
+                }));
+            }
+
+            // create 3 independent counter components nested inside an App component.  Render the App component.
+
+            render(){
+                return(
+                    <div> 
+                        <h1>The count is {this.state.count}</h1>
+                        <button onClick={this.increment}>+</button>
+                        <button onClick={this.decrement}>-</button>
+                    </div>
+                )
+            }
+        }
+    
+        ReactDOM.render(
+            <Counter />,
+            document.getElementById('root')
+        );
+    </script>
+    
+</body>
+</html>
