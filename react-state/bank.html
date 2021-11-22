@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+
+
+    <!--Checking Account App
+    Create a checking account component consisting of an h1 element that displays your current account balance, and 2 input fields with buttons, one for deposits (adding money to the account) and one for withdrawals (subtracting money from the account).  (This can also be done without buttons; I’ll leave it up to you how exactly you want to implement this.) 
+    Use the componentDidMount() life cycle method (i) to retrieve the balance from localStorage once the App component is mounted, and (ii) to store the balance in localStorage when the window’s “beforeunload” event fires.
+    https://reactjs.org/docs/forms.html
+    https://reactjs.org/docs/state-and-lifecycle.html
+    https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
+    -->
+    
+    <div id="root"></div>
+    <script type="text/babel">
+    
+    class Banking extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {balance: 0, deposit:"", withdrawal:""};
+        }
+        onDeposit = (e) =>{
+            this.setState({deposit: e.target.value});
+        }
+        onWithdrawal = (e) =>{
+            this.setState({withdrawal: e.target.value});
+        }
+        handleDeposit = () =>{
+            this.setState((state)=>({
+                balance: this.state.balance + parseFloat(this.state.deposit),
+            }));
+        }
+        handleWithdrawal = () =>{
+            this.setState((state)=>({
+                balance: this.state.balance - parseFloat(this.state.withdrawal),
+            }));
+        };
+
+        componentDidMount(){
+            const balance = localStorage.getItem("balance");
+
+            if(balance !== null){
+                this.setState({balance:parseFloat(balance)});
+            }
+            window.addEventListener("beforeunload", () =>{
+                localStorage.setItem("balance", this.state.balance);
+            });
+        }
+
+        render(){
+            return(
+                <div>
+                    <h1>Your current Balance is: {this.state.balance}</h1>
+
+                    <div className="deposit">
+                        <input type="number" onChange={this.onDeposit} value={this.state.deposit} />
+                        <button onClick={this.handleDeposit}>Deposit</button>
+                    </div>
+
+                    <div className="withdrawal">
+                        <input type="number" onChange={this.onWithdrawal} value={this.state.withdrawal} />
+                        <button onClick={this.handleWithdrawal}>Withdrawal</button>
+                    </div>
+                </div>
+            );
+        }
+    }
+
+
+        class App extends React.Component{
+            render(){
+                return(
+                    <div>
+                     <Banking />
+                    </div>
+                );
+            }
+        }
+
+    
+    ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+    
+</body>
+</html>
