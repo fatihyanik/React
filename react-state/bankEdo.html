@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balance</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Balance extends React.Component {
+          constructor(props) {
+              super(props);
+              this.state = {
+                  balance : 0,
+                  input1: '',
+                  input2: ''
+                  
+              }
+              this.depositInput = this.depositInput.bind(this);
+              this.withdrawInput = this.withdrawInput.bind(this);
+              this.depositClick = this.depositClick.bind(this);
+              this.withdrawClick = this.withdrawClick.bind(this);
+          }
+          componentDidMount() {
+              const balance = localStorage.getItem('balance');
+              if(balance !== null) {
+                  this.setState({
+                      balance: parseInt(balance)
+                  });
+              };
+              window.addEventListener('beforeunload',() => {
+                  localStorage.setItem('balance', this.state.balance)
+              })
+          }
+          depositInput(event) {
+              event.preventDefault();
+              this.setState({
+                  input1: event.target.value,
+              })
+          }
+          depositClick = () => {
+              this.setState(state => ({
+                  balance: parseInt(state.balance) + parseInt(state.input1),
+                  input1: ''
+                }))
+          };
+          withdrawInput(event) {
+              event.preventDefault();
+              this.setState({
+                  input2: event.target.value
+              })
+          }
+          withdrawClick = () => {
+              this.setState(state => ({
+                  balance: parseInt(state.balance) - parseInt(state.input2),
+                  input2: ''
+              }));
+            }
+          render() {
+              const h1Style = {
+                  textTransform: 'uppercase',
+                  fontStyle: 'italic',
+                  padding: "10px",
+                  textAlign: "center",
+                  fontSize: '70px'
+              };
+              const formStyle = {
+                  display: 'flex',
+                  justifyContent: 'center',
+
+              }
+              const inputStyle1 = {
+                  padding: '10px',
+                  textAlign: "center",
+                  fontSize: '30px',
+                  backgroundColor: 'green',
+                  fontWeight: 'bold'
+              }
+              const inputStyle2 = {
+                  padding: '10px',
+                  textAlign: "center",
+                  fontSize: '30px',
+                  backgroundColor: 'tomato',
+                  fontWeight: 'bold',
+              }
+              const button1 = {
+                  backgroundColor: 'black',
+                  color: 'green',
+                  fontSize: '30px',
+                  fontWeight: 'bold',
+                  textTransform: 'uppercase'
+              }
+              const button2 = {
+                  backgroundColor: 'black',
+                  color: 'tomato',
+                  fontSize: '30px',
+                  fontWeight: 'bold',
+                  textTransform: 'uppercase'
+              }
+              return (
+                  <div>
+                    <h1 style={h1Style}>Your current balance is <span>{this.state.balance}</span> €</h1>
+                    <div style={formStyle}>
+                        <input style={inputStyle1} type="number" onChange={this.depositInput} value={this.state.input1}/>
+                        <button style={button1} onClick={this.depositClick}>Deposit</button>
+                        <input style={inputStyle2} type="number" onChange={this.withdrawInput} value={this.state.input2} />
+                        <button style={button2} onClick={this.withdrawClick}>Withdraw</button>
+                    </div>
+                  </div>
+              )
+          }
+
+      }
+      ReactDOM.render(
+          <Balance/>,
+          document.getElementById('root')
+      )
+    </script>
+  </body>
+</html>
