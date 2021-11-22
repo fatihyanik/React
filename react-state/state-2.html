@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>React-Intro</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Counter extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { counter: 0, name: this.props.name };
+        }
+        countUp = () => {
+          this.setState((state) => ({
+            counter: this.state.counter + 1,
+          }));
+        };
+        countDown = () => {
+          this.setState((state) => ({
+            counter: this.state.counter - 1,
+          }));
+        };
+        changeName = () => {
+          this.setState({ name: this.props.setName });
+        };
+        render() {
+          return (
+            <div
+              style={{
+                margin: "0.5rem",
+                padding: "1rem",
+                backgroundColor: this.props.color,
+                borderRadius: "1rem",
+                boxShadow: "0.5rem 0.7rem 0.9rem rgba(0,0,0, 0.4)",
+              }}
+            >
+              <h2>
+                Counter for {this.state.name} is at {this.state.counter}
+              </h2>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <button onClick={this.countUp}>+</button>
+                <button
+                  style={{ marginRight: "1rem", marginLeft: "1rem" }}
+                  onClick={this.changeName}
+                >
+                  CName
+                </button>
+                <button onClick={this.countDown}>-</button>
+              </div>
+            </div>
+          );
+        }
+      }
+      class App extends React.Component {
+        render() {
+          const ColorBlue = "#255F85";
+          const colorGreen = "#2CEAA3";
+          const colorRed = "#C5283D";
+          return (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                marginTop: "2rem",
+              }}
+            >
+              <Counter name="Jack" setName="Jason" color={ColorBlue} />
+              <Counter name="Bell" setName="Becks" color={colorGreen} />
+              <Counter name="Jinx" setName="Raja" color={colorRed} />
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
