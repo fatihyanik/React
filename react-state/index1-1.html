@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello, world</title>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // 1. include CDN links for React, React_DOM, and Babel
+        // 2. create a div with id="root" in the body
+        // 3. create a script element with type="text/babel" in the body
+        // 4. call ReactDOm.render() with 2 arguments : the element/component you want to render,
+        // and(ii) the DOM element (root) where you want to render it.
+
+
+        function getFullName(userObject){
+            return userObject.firstName + ' ' + userObject.lastName;
+        }
+        const user = {
+            firstName:"Jordan",
+            lastName:"Walke"
+        };
+
+        const element = (
+            <div>     
+                <h1>Hello, {getFullName(user)}!</h1>
+                <p>Some text </p>
+            </div>
+            ); 
+        
+        ReactDOM.render(
+            // JSX (extension of JavaScript)
+            element, // what? element
+            document.getElementById('root') // where
+        );
+        //task 1: display a paragraph under the h1 element
+    </script>
+
+</body>
+</html>
