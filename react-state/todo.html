@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            item: "",
+            toDoList: [],
+          };
+        }
+        componentDidMount() {
+          const toDoList = JSON.parse(localStorage.getItem("toDoList"));
+          if (toDoList) {
+            this.setState({
+              toDoList: toDoList,
+            });
+          }
+          window.addEventListener("beforeunload", () => {
+            localStorage.setItem(
+              "toDoList",
+              JSON.stringify(this.state.toDoList)
+            );
+          });
+        }
+        addTask = () => {
+          this.setState((state) => ({
+            toDoList: [...state.toDoList, state.item],
+          }));
+        };
+        removeItem = (event) => {
+          this.setState((state) => {
+            let index = event.target.dataset.index;
+            const toDoList = [...state.toDoList];
+            toDoList.splice(index, 1);
+            return { toDoList: toDoList };
+          });
+        };
+        handleChange = (event) => {
+          this.setState({
+            item: event.target.value,
+          });
+        };
+        render() {
+          return (
+            <div>
+              <h1>You have {this.state.toDoList.length} Items</h1>
+              <ul>
+                {this.state.toDoList.map((item, i) => (
+                  <li key={i}>
+                    {item}
+                    <button data-index={i} onClick={this.removeItem}>
+                      Done
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <input onChange={this.handleChange} value={this.state.item} />
+              <button onClick={this.addTask}>Add</button>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
