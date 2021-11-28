@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+    // Task 1: create 3 Hello components with buttons nested inside an App component
+    // Pass a different name to each Hello component
+    // Task 2: add a click handler to each button that alerts 'Hi, ', followed by the name passed to the Hello component
+      
+      function Hello(props) {
+        const handleClick = () => {
+          alert("Hi " + props.name);
+        };
+
+        return (
+          <div>
+            <h1>Greet {props.name}</h1>
+            <button onClick={handleClick}>Say Hi</button>
+          </div>
+        );
+      }
+
+      function App() {
+        return (
+          <div>
+            <Hello name="Ali" />
+            <Hello name="Ammar" />
+            <Hello name="Andre" />
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
