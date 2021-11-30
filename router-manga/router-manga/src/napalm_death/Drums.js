@@ -4,7 +4,7 @@ import danny from './img/danny_drums.jpg';
 const Drums = () =>{
     return (
       <div>
-        <h3>Danny Herrera</h3>
+        <h3>Ferman</h3>
         <div>
           <img className='member_img' src={danny}  alt="Danny Herrera"/>
         </div>

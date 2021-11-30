@@ -4,7 +4,7 @@ import barney from './img/barney_vocals.jpg';
 const Vocals = () =>{
     return (
       <div>
-        <h3>Mark "Barney" Greenway</h3>
+        <h3>Manga</h3>
         <div>
           <img className='member_img' src={barney}  alt="Mark 'Barney' Greenway"/>
         </div>
