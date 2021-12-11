@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-
 function App(props) {
   const [counter, setCounter] = useState(0);
   const [name, setName] = useState("-Enter Name-");
@@ -37,7 +36,7 @@ function App(props) {
         boxShadow: "0.5rem 0.7rem 0.9rem rgba(0,0,0, 0.4)",
       }}
     >
-      <h2 style ={{display:"flex", justifyContent:"center"}}>
+      <h2 style={{ display: "flex", justifyContent: "center" }}>
         Counter for {name} is at {counter}
       </h2>
       <div style={{ display: "flex", justifyContent: "center" }}>
