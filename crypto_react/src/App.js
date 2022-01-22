@@ -5,19 +5,33 @@ import Coin from "./components/Coin";
 
 function App() {
   const [listOfCoins, setListOfCoins] = useState([]);
+  const [searchWord, setSearchWord] = useState("");
 
   useEffect(() => {
-    Axios.get("https://api.coinstats.app/public/v1/coins?skip=0&limit=10").then(
+    Axios.get("https://api.coinstats.app/public/v1/coins?skip=0").then(
       (response) => {
         setListOfCoins(response.data.coins);
       }
     );
   }, []);
+
+  const filteredCoins = listOfCoins.filter((coin) => {
+    return coin.name.toLowerCase().includes(searchWord.toLowerCase())
+  });
+
   return (
     <div className="App">
-      <div className="cryptoHeader"></div>
+      <div className="cryptoHeader">
+        <input
+          type="text"
+          placeholder="Name of Bitcoin..."
+          onChange={(event) => {
+            setSearchWord(event.target.value);
+          }}
+        />
+      </div>
       <div className="cryptoDisplay">
-        {listOfCoins.map((coin, index) => {
+        {filteredCoins.map((coin, index) => {
           return (
             <Coin
               name={coin.name}
