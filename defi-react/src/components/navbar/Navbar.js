@@ -1,13 +1,17 @@
 import React, {useState} from 'react';
-import {AiOutlineMenu} from 'react-icons/ai';
+import {AiOutlineClose, AiOutlineMenu} from 'react-icons/ai';
 import './Navbar.css'
 
 function Navbar() {
+
+    const [click, setClick] = useState(false);
+    const handleClick = () => setClick(!click);
+
     return (
         <div className="navbar">
             <div className="container">
                 <h1 style={{marginLeft: "1rem", color: "#00d8ff"}}>Defi</h1>
-                <ul className="nav">
+                <ul className={click ? "nav active" : "nav"}>
                     <li className="nav-item">
                         <a href="/">Platform</a>
                     </li>
@@ -24,8 +28,8 @@ function Navbar() {
                         <a className="btn" href="/">Use Defi</a>
                     </li>
                 </ul>
-                <div className="hamburger">
-                    <AiOutlineMenu className="icon" />
+                <div onClick={handleClick} className="hamburger">
+                    {click ? (<AiOutlineClose className="icon" />) :  (<AiOutlineMenu className="icon" />)}
                 </div>
             </div>
         </div>
