@@ -14,7 +14,7 @@ function Hero() {
                 <p>Guaranteed liquidity trading for millions o users and top Ethereum applications.</p>
                 <div className="btn-group">
                     <button className="btn">Use Defi</button>
-                    <button className="btn btn-outline">Documentation</button>
+                  {/*   <button className="btn btn-outline">Documentation</button> */}
                     <button className="btn btn-outline">FAQ</button>
                 </div>
             </div>
