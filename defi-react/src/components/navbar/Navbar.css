@@ -1,10 +1,10 @@
-.navbar{
+.navbar {
     width: 100%;
     height: 90px;
     background-color: #000;
 }
 
-.navbar .container{
+.navbar .container {
     max-width: 1140px;
     height: 100%;
     margin: auto;
@@ -13,38 +13,38 @@
     align-items: center;
 }
 
-.navbar .nav{
+.navbar .nav {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.navbar li{
+.navbar li {
     padding: 1rem;
 }
 
-.hamburger{
+.hamburger {
     display: none;
 }
 
-.navbar .icon{
+.navbar .icon {
     color: #f4eeff;
     font-size: 2rem;
 }
 
-.navbar h1,a{
+.navbar h1,a {
     color: #f4eeff;
 }
 
-@media screen and (max-width:940px){
-    .hamburger{
+@media screen and (max-width:940px) {
+    .hamburger {
         display: block;
     }
 
-    .nav{
+    .nav {
         position: absolute;
         flex-direction: column;
-        justify-content: start !important;
+        justify-content: start!important;
         top: 90px;
         left: -100%;
         width: 100%;
@@ -52,11 +52,13 @@
         background-color: #000;
         transition: 0.3s;
     }
-    .nav.active{
-        left:0;
+
+    .nav.active {
+        left: 0;
     }
 
-    .nav a{
+    .nav a {
         font-size: 1.4rem;
     }
+
 }
