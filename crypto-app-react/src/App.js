@@ -3,6 +3,7 @@ import axios from "axios";
 
 import './App.css';
 import Coins from "./components/Coins";
+import Navbar from "./components/Navbar";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <>
+    <Navbar />
     <Coins coins={coins} />
     </>
   );
