@@ -1,14 +1,14 @@
 .navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon {
-    font-size: 2rem;
-    color: #ffa600;
+  font-size: 2rem;
+  color: #ffa600;
 }
 
 .orange {
-    color: #ffa600;
+  color: #ffa600;
 }
