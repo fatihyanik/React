@@ -1,8 +1,11 @@
 import React from "react";
 import CoinItem from "./CoinItem";
-import './Coins.css'
+import Coin from "../routes/Coin";
+import { Link } from "react-router-dom";
 
-function Coins(props) {
+import "./Coins.css";
+
+const Coins = (props) => {
   return (
     <div className="container">
       <div>
@@ -16,11 +19,15 @@ function Coins(props) {
         </div>
 
         {props.coins.map((coins) => {
-          return <CoinItem coins={coins} key={coins.id} />;
+          return (
+            <Link to={`/coin/${coins.id}`} element={<Coin />} key={coins.id}>
+              <CoinItem coins={coins} />
+            </Link>
+          );
         })}
       </div>
     </div>
   );
-}
+};
 
 export default Coins;
