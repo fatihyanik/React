@@ -1,0 +1,38 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 22px;
+    padding: 100px 50px 50px;
+  }
+  
+  .user-info {
+    text-align: left;
+  }
+  
+  .user-info img {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 200px;
+  }
+  
+  .user-info a {
+    text-decoration: none;
+    color: #40a8f3;
+    transition: 0.3s ease color;
+  }
+  
+  .user-info a:hover {
+    text-decoration: underline;
+  }
+  
+  .user-info h3 {
+    font-size: 50px;
+    margin: 0 0 20px;
+  }
+  
+  .user-info strong {
+    display: block;
+    font-size: 14px;
+    opacity: 0.4;
+    margin-bottom: 6px;
+  }

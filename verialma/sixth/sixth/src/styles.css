@@ -1,0 +1,23 @@
+.App {
+    font-family: sans-serif;
+    margin-top: 83px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+  .input-item {
+    margin-top: 2%;
+  }
+  
+  .input {
+    width: 50%;
+  }
+  
+  .user-form {
+    background: #f2f2f2;
+    border-radius: 10px;
+    padding: 10px 20px 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  
