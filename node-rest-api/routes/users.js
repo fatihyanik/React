@@ -1,9 +1,14 @@
-const User = require("../models/User");
+//const User = require("../models/User");
 const router = require("express").Router();
-const bcrypt = require("bcrypt");
+//const bcrypt = require("bcrypt");
+
+
+router.get("/", (req,res)=>{
+  res.send("hey its user route")
+})
 
 //update user
-router.put("/:id", async (req, res) => {
+/* router.put("/:id", async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     if (req.body.password) {
       try {
@@ -24,10 +29,10 @@ router.put("/:id", async (req, res) => {
   } else {
     return res.status(403).json("You can update only your account!");
   }
-});
+}); */
 
 //delete user
-router.delete("/:id", async (req, res) => {
+/* router.delete("/:id", async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
     try {
       await User.findByIdAndDelete(req.params.id);
@@ -38,10 +43,10 @@ router.delete("/:id", async (req, res) => {
   } else {
     return res.status(403).json("You can delete only your account!");
   }
-});
+}); */
 
 //get a user
-router.get("/:id", async (req, res) => {
+/* router.get("/:id", async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     const { password, updatedAt, ...other } = user._doc;
@@ -49,11 +54,11 @@ router.get("/:id", async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-});
+}); */
 
 //follow a user
 
-router.put("/:id/follow", async (req, res) => {
+/* router.put("/:id/follow", async (req, res) => {
   if (req.body.userId !== req.params.id) {
     try {
       const user = await User.findById(req.params.id);
@@ -71,11 +76,11 @@ router.put("/:id/follow", async (req, res) => {
   } else {
     res.status(403).json("you cant follow yourself");
   }
-});
+}); */
 
 //unfollow a user
 
-router.put("/:id/unfollow", async (req, res) => {
+/* router.put("/:id/unfollow", async (req, res) => {
   if (req.body.userId !== req.params.id) {
     try {
       const user = await User.findById(req.params.id);
@@ -94,5 +99,5 @@ router.put("/:id/unfollow", async (req, res) => {
     res.status(403).json("you cant unfollow yourself");
   }
 });
-
+ */
 module.exports = router;
