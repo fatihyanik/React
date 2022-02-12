@@ -17,7 +17,6 @@ export default function Table(props) {
       props.setInputBack("");
     };
   
-    /* ------------------------------- SHOW TABLE OR FUNNY FACE */
     const CardFrontBack = () => {
       if (props.cards.length === 0) return <hr></hr>;
       else
@@ -31,9 +30,9 @@ export default function Table(props) {
                 <th>Delete</th>
               </tr>
             </thead>
+              <tbody >
             {props.cards.map((card, i) => (
-              <tbody key={i}>
-                <tr>
+                <tr key={i}>
                   <td>{card.front}</td>
                   <td>{card.back}</td>
                   <td>
@@ -47,8 +46,8 @@ export default function Table(props) {
                     </button>
                   </td>
                 </tr>
+              ))}
               </tbody>
-            ))}
           </table>
         );
     };
