@@ -1,0 +1,39 @@
+/* MyForm.css */
+
+.my-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.my-form div {
+  margin-bottom: 15px;
+}
+
+.my-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.my-form input {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.my-form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.my-form button:hover {
+  background-color: #45a049;
+}
