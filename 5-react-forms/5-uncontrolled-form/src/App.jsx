@@ -12,7 +12,7 @@ const UncontrolledForm = () => {
   };
 
   return (
-    <div className="form-container"> {/* CSS sınıfını ekledik */}
+    <div className="form-container"> {/* CSS sinifini ekledik */}
       <form onSubmit={handleSubmit}>
         <label>
           Kontrolsüz Form:
